@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Habit to make today !</h1>
+
+      <ul id="myList">
+        <li checked>Work 4 hours</li>
+      </ul>
+
+      <dialog id="dial">
+        <button id="close">x</button>
+        <h3>Add new habits !</h3>
+        <form action="" id="habitForm">
+          <input
+            type="text"
+            name="habit"
+            id="habit"
+            placeholder="Enter your habit"
+          />
+          <button type="submit">Add</button>
+        </form>
+      </dialog>
+
+      <button id="add">Add new Habit</button>
+      <button type="">History</button>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
