@@ -166,6 +166,44 @@ input[type="password"] {
   gap: 16px;
 }
 
+.dialog {
+  background: var(--background-color);
+  border: none;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  min-width: 300px;
+  border-radius: 8px;
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.dialog-content {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dialog-content > form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.dialog-content > h2 {
+  margin: 0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

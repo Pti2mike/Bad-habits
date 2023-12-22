@@ -14,18 +14,24 @@
         <p>Loading...</p>
       </div>
 
-      <dialog id="dial">
-        <button id="close">x</button>
-        <h3>Add new habits !</h3>
-        <form action="" id="habitForm">
-          <input
-            type="text"
-            name="habit"
-            id="habit"
-            placeholder="Enter your habit"
-          />
-          <button type="submit">Add</button>
-        </form>
+      <dialog id="add-habit-dialog" class="dialog">
+        <div class="dialog-content">
+          <!-- <button id="close">x</button> -->
+          <h2>Add new habits !</h2>
+          <form id="add-habit-form">
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Enter your habit"
+            />
+            <button type="submit">Add</button>
+          </form>
+
+          <form method="dialog">
+            <button type="submit" id="close" class="close-button">X</button>
+          </form>
+        </div>
       </dialog>
       <!-- Fin test -->
 
