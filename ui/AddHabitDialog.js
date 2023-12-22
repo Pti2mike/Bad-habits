@@ -1,55 +1,64 @@
+import { createHabit } from "../api/habits-api";
+import { TodayHabits } from "./TodayHabits";
+
 export class AddHabitDialog {
-  constructor() {}
+  static instance;
+  constructor() {
+    if (AddHabitDialog.instance) {
+      throw new Error("Use AddHabitDialog.getInstance() instead");
+    }
+  }
+
+  static getInstance() {
+    if (!AddHabitDialog.instance) {
+      AddHabitDialog.instance = new AddHabitDialog();
+    }
+    return AddHabitDialog.instance;
+  }
+
+  _open = false;
 
   async init() {
     this.element = document.querySelector("#add-new-habit");
-    this.openDialog();
-  }
-
-  async openDialog() {
-    const dialog = document.getElementById("add-habit-dialog");
+    this.dialog = document.getElementById("add-habit-dialog");
+    this.habitForm = document.getElementById("add-habit-form");
 
     this.element.addEventListener("click", () => {
-      dialog.showModal();
+      this.open = true;
     });
 
-    this.registerHabit();
-  }
-
-  async closeDialog() {
-    const dialog = document.getElementById("add-habit-dialog");
-    const close = document.getElementById("close");
-
-    close.addEventListener("click", () => {
-      dialog.close();
-    });
-  }
-
-  async registerHabit() {
-    const dialog = document.getElementById("add-habit-dialog");
-    let habitForm = document.getElementById("add-habit-form");
-
-    habitForm.addEventListener("submit", (event) => {
+    this.habitForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      let newHabit = document.getElementById("title");
-
-      let habitToAdd = newHabit.value;
-
-      const createHabit = (title) => {
-        return fetch(`http://localhost:3000/habits`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ title }),
-        }).then((res) => res.json());
-      };
-
-      createHabit(habitToAdd);
-
-      newHabit.value = "";
-      dialog.close();
+      this.handleSubmit(event);
     });
+  }
+
+  async handleSubmit(event) {
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const title = formData.get("title");
+
+    try {
+      await createHabit(title);
+
+      TodayHabits.getInstance().refresh();
+      this.dialog.removeAttribute("open");
+    } catch (error) {
+      alert("Failed to create habits");
+    }
+  }
+
+  get open() {
+    return this._open;
+  }
+
+  set open(newOpen) {
+    this._open = newOpen;
+    if (newOpen) {
+      this.dialog.setAttribute("open", "");
+    } else {
+      this.dialog.removeAttribute("open");
+    }
   }
 }
