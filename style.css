@@ -204,6 +204,38 @@ input[type="password"] {
   margin: 0;
 }
 
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+#table-wrapper {
+  overflow: auto;
+  max-width: 500px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd; /* Gray border for all table cells */
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+table th {
+  background-color: var(
+    --button-bg-color
+  ); /* Using button's background color for header background */
+  color: var(--primary-text-color);
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--button-bg-color);
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

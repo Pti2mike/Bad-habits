@@ -16,7 +16,6 @@
 
       <dialog id="add-habit-dialog" class="dialog">
         <div class="dialog-content">
-          <!-- <button id="close">x</button> -->
           <h2>Add new habits !</h2>
           <form id="add-habit-form">
             <input
@@ -33,7 +32,16 @@
           </form>
         </div>
       </dialog>
-      <!-- Fin test -->
+
+      <dialog class="dialog" id="habits-history-dialog">
+        <div class="dialog-content">
+          <h2>Habits history</h2>
+          <div id="table-wrapper"></div>
+          <form method="dialog">
+            <button type="submit" class="close-button">X</button>
+          </form>
+        </div>
+      </dialog>
 
       <button id="add-new-habit">Add new Habit</button>
       <button id="open-history">History</button>

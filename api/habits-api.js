@@ -23,3 +23,7 @@ export const createHabit = (title) => {
     body: JSON.stringify({ title }),
   }).then((res) => res.json());
 };
+
+export const getAllHabits = () => {
+  return fetch(`${BASE_URL}/habits`).then((res) => res.json());
+};
